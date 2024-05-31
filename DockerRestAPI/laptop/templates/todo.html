@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Data</title>
+    <style>
+      th {
+          padding: 8px 30px;
+          text-align: center;
+      }
+      td {
+        text-align: center;
+      }
+  </style>
+</head>
+<body>
+    <h1>Data From Mongo</h1>
+    <table>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <th>Brev Dist: {{ item.brev_dist }}</th>
+                    <th>Begin Date: {{ item.begin_date }}</th>
+                </tr>
+                <tr>
+                    <th>Controls</th>
+                    <td colspan="2">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Miles</th>
+                                    <th>Km</th>
+                                    <th>Location</th>
+                                    <th>Open</th>
+                                    <th>Close</th>
+                                    <!-- Add other column headers as needed -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for control in item.controls %}
+                                    <tr>
+                                        <td>{{ control.miles }}</td>
+                                        <td>{{ control.km }}</td>
+                                        <td>{{ control.location }}</td>
+                                        <td>{{ control.open }}</td>
+                                        <td>{{ control.close }}</td>
+                                        <!-- Add other data fields as needed -->
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
